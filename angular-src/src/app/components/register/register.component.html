@@ -1,6 +1,8 @@
+<!-- register page with a form to enter required details -->
 <h2 class="page-header">Register</h2>
 <form (submit)="onRegisterSubmit()">
   <div class="form-group">
+    <!-- all the fields are bound to vairables in the TS file of this component -->
     <label>Name</label>
     <input type="text" [(ngModel)]="name" name="name" class="form-control">
   </div>

@@ -17,15 +17,22 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 
 import { FlashMessagesModule } from 'angular2-flash-messages';
+//all of our imports above
 
+//define array of routes in the angular app
 const appRoutes: Routes = [
+  //on the index route display home component
   {path:'', component: HomeComponent},
+  //on /register display the register component
   {path:'register', component: RegisterComponent},
+  //on /login display the login component
   {path:'login', component: LoginComponent},
+  //here dashboard and rofile routes require authentication
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
 ];
 
+//components, imports and services
 @NgModule({
   declarations: [
     AppComponent,

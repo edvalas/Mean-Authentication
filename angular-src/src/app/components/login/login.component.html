@@ -1,7 +1,10 @@
+<!-- login page, has a form which triggers the onLoginSubmit method -->
 <h2 class="page-header">Login</h2>
 <form (submit)="onLoginSubmit()">
   <div class="form-group">
     <label>Username</label>
+    <!-- input for username and password fields are bound, using ngmodel to the username and password vars
+      in TS file for this component-->
     <input type="text" [(ngModel)]="username" name="username" class="form-control">
   </div>
   <div class="form-group">

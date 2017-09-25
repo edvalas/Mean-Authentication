@@ -1,14 +1,19 @@
+<!-- just a nav bar template from bootstrap -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <h1 class="navbar-brand mb-0">Mean Auth App</h1>
 
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
+      <!-- [routerLink] to home page and options to highlight which page you are currently on -->
       <li class="nav-item active" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
         <a class="nav-link" [routerLink]="['/']">Home</a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
+        <!-- using authservice.loggedin method to show or hide some of the links in the nav bar,
+        if the user is logged in then display the dashboard, profile and logout links
+        otherwise display login and register links in the nav bar -->
         <li *ngIf="authService.loggedIn()" class="nav-item active" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
             <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
         </li>

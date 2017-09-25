@@ -10,18 +10,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  //variables for user object
   name:String;
   username:String;
   email:String;
   password:String;
 
+  //constructor injects dependencies/imports we need for this class
   constructor(private validateService: ValidateService, private flashMessage: FlashMessagesService,
   private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
+  //when register form is submitted
   onRegisterSubmit(){
+    //create a user object from the variables
     const user = {
       name: this.name,
       email: this.email,
@@ -40,12 +44,15 @@ export class RegisterComponent implements OnInit {
       return false;
     }
 
-    //register user
+    //register user by calling the authservice and subscribe to the responce
     this.authService.registerUser(user).subscribe(data => {
+      //if data.success if true
       if(data.success){
+        //flash a message and navigate ot login page
         this.flashMessage.show('Registration Successful', {cssClass: 'alert-success', timeout: 3000});  
         this.router.navigate(['/login']);
       }else{
+        //else something went wrong and stay on register page
         this.flashMessage.show('Registration not successful', {cssClass: 'alert-danger', timeout: 3000});  
         this.router.navigate(['/register']);
       }
